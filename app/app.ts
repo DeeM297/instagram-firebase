@@ -1,29 +1,29 @@
-import {Component, ViewChild} from '@angular/core';
-import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
+import {Component, ViewChild} from "@angular/core";
+import {NavController, Platform, ionicBootstrap, Nav} from "ionic-angular";
+import {StatusBar} from "ionic-native";
+import {HomePage} from "./pages/home/home";
 
 
 @Component({
-  templateUrl: 'build/app.html'
+  templateUrl: "build/app.html",
 })
+
 class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
-  rootPage: any = HelloIonicPage;
-  pages: Array<{title: string, component: any}>;
+  rootPage: any = HomePage;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(
-    private platform: Platform,
-    private menu: MenuController
+      private platform: Platform
+      //private nav: NavController
   ) {
     this.initializeApp();
 
-    // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage }
+      { title: "Home", component: HomePage }
     ];
+
   }
 
   initializeApp() {
@@ -35,9 +35,6 @@ class MyApp {
   }
 
   openPage(page) {
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-    // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
 }

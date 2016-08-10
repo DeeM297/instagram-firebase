@@ -1,13 +1,13 @@
-import {Page} from 'ionic-angular';
-
+import {NavController, Page} from 'ionic-angular';
+import { Component } from '@angular/core';
 import { Photo } from '../photo';
 
 import { Camera } from 'ionic-native';
 
-@Page({
-  templateUrl: 'build/pages/hello-ionic/hello-ionic.html'
+@Component({
+  templateUrl: "build/pages/home/home.html"
 })
-export class HelloIonicPage {
+export class HomePage {
   constructor() {}
 
   photos: Photo[] = [new Photo("http://placehold.it/350x150", 5),new Photo("http://placehold.it/350x151", 6)];
@@ -16,8 +16,7 @@ export class HelloIonicPage {
     Camera.getPicture({
       destinationType: Camera.DestinationType.DATA_URL,
       targetHeight: 500,
-      targetWidth: 500,
-      correctOrientation: true
+      targetWidth: 500
     }).then((imageData) => {
       this.photos.push(new Photo("data:image/jpeg;base64," + imageData,0));
     }, (err) => {
